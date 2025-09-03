@@ -1,0 +1,31 @@
+Streamlit
+.streamlit/
+.venv/
+pycache/
+
+Python
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+lib/
+lib64/
+Python.h
+*.so
+.DS_Store
+
+IDE
+.vscode/
+.idea/
+
+macOS
+.DS_Store
+.localized
+
+Data
+데이터 파일은 Git에 포함되어야 하므로 주석 처리합니다.
+meals_data.csv
+Secrets (Streamlit 앱 배포 시 사용)
+.streamlit/secrets.toml
