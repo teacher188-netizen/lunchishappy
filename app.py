@@ -27,8 +27,13 @@ st.markdown("---")
 @st.cache_data
 def load_data():
     if os.path.exists("meals_data.csv"):
-        # 로컬 파일에서 데이터 로드
-        df = pd.read_csv("meals_data.csv")
+        try:
+            # UTF-8로 먼저 시도
+            df = pd.read_csv("meals_data.csv")
+        except UnicodeDecodeError:
+            # 실패하면 cp949(euc-kr)로 재시도
+            df = pd.read_csv("meals_data.csv", encoding='cp949')
+
         # '급식일자'를 datetime 형식으로 변환하여 인덱스로 설정
         df['급식일자'] = pd.to_datetime(df['급식일자'])
         df.set_index('급식일자', inplace=True)
